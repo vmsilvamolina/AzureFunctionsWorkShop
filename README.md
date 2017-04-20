@@ -1,7 +1,7 @@
 # AzureFunctionsWorkShop
 Repositorio para WorkShop de Azure Functions en el Global Azure Bootcamp
 
-[Azure Functions](https://docs.microsoft.com/en-us/azure/media/index/azurefunctions.svg)
+![Azure Functions](https://docs.microsoft.com/en-us/azure/media/index/azurefunctions.svg)
 
 ## Qué es Azure Functions?
 
