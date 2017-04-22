@@ -1,10 +1,10 @@
 # Portal
 
-### Iniciar sesión en el portal
+#### Iniciar sesión en el portal
 
 - Navegar a la siguiente dirección URL: https://portal.azure.com e ingresar con las credenciales de nuestra suscripción.
 
-### Crear el servidor SQL Server y el Grupo de Recursos
+#### Crear el servidor SQL Server y el Grupo de Recursos
 
 En el portal seleccionar New (+), ingresar SQL Data y seleccionar el resultado para desplegar el asistente:
 <img src="https://do3riw-ch3302.files.1drv.com/y4mO87S7UzK-yn-buislkU_gUrd1YLCQtjlum_Oe8_QcQR4Jj-_oGaZKewALRj1Artl7z8rOjrqG9wXzdDP6mpT414cHmCtqkgrxhQPthhdHIrKmBEuowgcgjn8luPGqCQWo2Dv_FlTE09PJ0X_XUxpgBqlEUjtBmWYrPVrsamuOhrtldC_OGia7gPVnQrBcz8BVjWzEM5tRxMwpFLcKBY23g?width=397&height=266&cropmode=none">
@@ -26,28 +26,68 @@ Y luego *Create*, en la sección que aparece.
 
 Y como último paso seleccionar *Create*.
 
-### Habilitar acceso a nuestra IP
+#### Habilitar acceso a nuestra IP
+
+- Para poder acceder a las bases de datos de un servidor de Azure SQL debemos crear una regla en el Firewall, para ello vamos a nuestro grupo de recursos, seleccionamos el servidor de SQL y luego seleccionamos *Firewall*:
+
+<img src="https://ce3oiw-ch3302.files.1drv.com/y4mSVmeLGH5pTugsJnw39FfYmGiw26Ynhez4OA595cHIDwItmbMdeUYP0tYooXxC583Xk2X_jwh2q7HkNPlVBXL4_kStsCL0_e8JLghPLcE657pX_R-htjRZilz70i1dbEwCQExokCBHRYF5Ug5erU6yOG-sxhEG25N0YLbfbjAST3GKDSwarejyNYakk-wJ1ugt3X_z7W8-VQvYGrgRKvZMw?width=1366&height=640&cropmode=none">
+
+- En la imagen se detalla la regla de modo que permita el acceso desde cualquier IP (menos seguro, solamente para el ejemplo).Clic en *Save* para guardar cambios. Luego de generar la regla, clic en Ok.
 
 
-- Luego de generar la regla, clic en Ok.
-
-
-### Conectar la Base de Datos
+#### Conectar la Base de Datos
 
 - Abrimos Visual Studio y seleccionamos *Server Explorer*, en la opción *Data Connection*, clic derecho y *Add Connection...*
 
-<img>
+<img src="https://ce3piw-ch3302.files.1drv.com/y4m9FSRELAn0taIISK03UTmNIxYHLL_E-7WCIZXrzRXxPC3HSRPJTtGtTIVspbfJP86o8zhmVkoOMJbz-GTuzFXSHqmd7D7vNyY1UbkfQE7fKYub4b1cQIfbdIB4FsuEl_HpulRcY7miQj4dTU6f_DscRMoInpkAblRkn50nSWoNDQiiI14TYfG6e4kWMPRTYRzSPkhXMTZuR1iEOhOuFRwgg?width=497&height=298&cropmode=none">
 
 - En la ventana desplegable seleccionamos *Microsoft SQL Server*
 
-<img>
+<img src="https://ce3niw-ch3302.files.1drv.com/y4mTtDBywel31QD4DWvWeo2LPhMC3_E0tbNSZ7VgeE7YL8fc9SvFhFsQDsprL2p58__tsODc-fR7OMT0dvRz05FLjWrJUEL3Qi8gLa9GXUmIBtJwjjgBBvjlBXDYiA2vZUJlO0yqhus9pG6ykyQ1PIDKJ_8oEe06n2WixxWA1l8myGkjazjS3czQI6isIIVACeEVL3wNmmyJcFZt_sGwLWUBw?width=554&height=654&cropmode=none">
 
 - En el campo *Server name* ingresamos el nombre de nuestro servidor generado pasos atrás junto al sufijo *.database.windows.net*, obteniendo como resultado:
 
 > servername.database.windows.net
 
+#### Crear la función para limpiar registros
+
+- Accedemos al siguiente enlace: https://functions.azure.com/signin para comenzar a crear nuestra función. Ingresamos el nuevo nombre de la función y la región a crear:
+
+<img src="">
+
+- Clic en *Create + Get started*
 
 
+- Para poder acceder a nuestra base de datos desde Azure Functions, vamos a necesitar el string de conexión. Para ello, accedemos a las propiedades de la base de datos y seleccionamos el string y modificamos los valores de conexión según los datos del usuario y contraseña definidos:
+```
+Server=tcp:mvdgabsqlvs.database.windows.net,1433;Initial Catalog=functionsworkshop;Persist Security Info=False;User ID='{sql_username}';Password='{sql_password}';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+```
+
+
+```csharp
+#r "System.Configuration"
+#r "System.Data"
+
+using System;
+
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+
+public static async Task Run(TimerInfo myTimer, TraceWriter log)
+     {
+         var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+         using (SqlConnection conn = new SqlConnection(str))
+         {
+             conn.Open();
+             // Reemplazo valores
+             var text = "UPDATE SalesLT.Address SET City = 'Toronto' Where City = 'Montevideo'";
+             using (SqlCommand cmd = new SqlCommand(text, conn))
+             // Imprimo un log en pantalla
+             log.Info($"{rows} rows were deleted");
+         }
+     }
+```
 
 ###
 
