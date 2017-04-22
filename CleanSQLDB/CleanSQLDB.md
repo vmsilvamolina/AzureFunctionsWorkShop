@@ -97,17 +97,19 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-public static async Task Run(TimerInfo myTimer, TraceWriter log)
+   public static async Task Run(TimerInfo myTimer, TraceWriter log)
      {
          var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
          using (SqlConnection conn = new SqlConnection(str))
          {
              conn.Open();
-             // Reemplazo valores
-             var text = "UPDATE SalesLT.Address SET City = 'Montevideo' Where City = 'Toronto'";
+             var text = "UPDATE SalesLT.Address SET City = 'Toronto' Where City = 'Cures'";
              using (SqlCommand cmd = new SqlCommand(text, conn))
-             // Imprimo un log en pantalla
-             log.Info($"Listo!");
+             {
+                 cmd.ExecuteNonQuery();
+                 // Execute the command and log the # rows deleted.
+                 log.Info($"Listo!");
+             }
          }
      }
 ```
