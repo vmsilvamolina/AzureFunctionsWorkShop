@@ -1,4 +1,6 @@
-# Portal
+# Modifcar registros en base de datos SQL
+
+Esta segunda parte del WorkShop, vamos a ver como podemos acceder a nuestra base de datos para realizar acciones, ya sean de administración así como también de mantenimiento de la misma.
 
 #### Iniciar sesión en el portal
 
@@ -74,12 +76,16 @@ Clic en *Create + Get started*
 
 <img src="https://eo3miw-ch3302.files.1drv.com/y4mWTOJwF8fQ66_ZL2xIuw4UKaFC7KSYa9u4oG8FpxUDhRRXjeGVAg3VyeOCfUGq_xIP6ofFOCTsKfKbWpYiqpEIJa_U8FJJ0e6u7adGiSRKULj1845xqSIHEopW_z4S6WgL362WCik7-GL3QUVpaSZ7mXIbPIp9QkoShte8qLsVwKeRMykAx4R5z0zjnIHFwnMDuB9caBI6yf-a56vPzL9Ww?width=1355&height=585&cropmode=none">
 
+Seleccionar ***create your own custom function*** y dentro de las opciones que aparecen hacer clic en **TimerTrigger-CSharp**.
+
 <img src="https://eo3niw-ch3302.files.1drv.com/y4meqkCefxGPPLRjUj47iCBB66kiOKtllpI0mdxjdF9-FNidLmM_T6t1zAdCU8WsKyN6jSpyx1BdWtdA9mREUHQFhU79tz0lQDunnyT8yPwrLoOle_KclD8MSDCtbl4EQqRAToSa0cFQl79LRZwlJDWlHCZ228WTjVjaquD4rXviSaIJM1s2ZPqG4jh3z6gvVbnqqZZhJKKqQzPv4CGSwE4ow?width=1036&height=477&cropmode=none">
+
+E ingresar el nombre de la función y la región donde se va a crear:
 
 <img src="https://eo3oiw-ch3302.files.1drv.com/y4m84gUGV1WG6OOwSRjl3H9F_gxgoDE-aGGwUwzNJApAzNfJngBYwkLmvyV0ckfljekt-UgZQXUFN0IgAe8eaMUo3RgqutXOWkvKbrzwI0uNUxsspQOH9CAVrIyR0Id99ubfQ7CnA0Pd7tFsDItpKmZI4JPVHrJTMzkVEC5gB47AfdNWSQvXKZylI0qAva0jeSnzPg6b_QpNHz9tHodC_pp9g?width=337&height=322&cropmode=none">
 
 
-Y dentro del Código que aparece en la ventana vamos a reemplazarlo por lo siguiente:
+Ahora que se encuentra creada la función en pantalla tenemos un fragmento de código que vamos a reemplazar por lo siguiente:
 
 ```csharp
 #r "System.Configuration"
@@ -106,53 +112,6 @@ public static async Task Run(TimerInfo myTimer, TraceWriter log)
      }
 ```
 
-###
+Y que permite realizar el código anterior? Permite modificar los registros de la tabla SalesLT.Address dentro de la columna City sean modificados (de pasar a ser Toronto a Montevideo).
 
-
-# Consola
-
-## Instalar el módulo de Azure PowerShell 
-
-```powershell
-Install-Module -Name AzureRM -Scope CurrentUser -Force
-```
-
-## Iniciar sesión a nuestra suscripción de Azure
-
-```powershell
-Add-AzureRmAccount
-```
-
-## Create un Azure Resource Manager Resource Group
-
-```powershell
-$ResourceGroup = @{
-    Name = 'AzureFunctions-SQL'
-    Location = 'East US'
-}
-New-AzureRmResourceGroup @ResourceGroup
-```
-## Create an Azure SQL Server
-
-```powershell
-$SqlServer = @{
-    ResourceGroupName = 'AzureFunctions-SQL'
-    Name = 'mvdgabsqlvs'
-    Location = 'East US'
-    SqlAdministratorCredentials = (Get-Credential)
-    ServerVersion = '12.0'
-}
-New-AzureRmSqlServer @SqlServer
-```
-
-## Create an Azure SQL Database
-
-```powershell
-$SqlDatabase = @{
-    ResourceGroupName = 'AzureFunctions-SQL'
-    ServerName = 'mvdgabsqlVS'
-    DatabaseName = 'functionsworkshop'
-    Edition = 'Basic'
-}
-New-AzureRmSqlDatabase @SqlDatabase
-```
+Con el ejemplo anterior tenemos de forma programada una función que permite realizar acciones en nuestra base de datos, de forma automática sin tener que ocuparnos en dónde corre o que necesito para ejecutarla.
