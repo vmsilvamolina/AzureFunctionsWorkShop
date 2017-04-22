@@ -51,18 +51,35 @@ Y como último paso seleccionar *Create*.
 
 #### Crear la función para limpiar registros
 
-- Accedemos al siguiente enlace: https://functions.azure.com/signin para comenzar a crear nuestra función. Ingresamos el nuevo nombre de la función y la región a crear:
+- Antes de comenzar con la función, para poder acceder a nuestra base de datos desde Azure Functions, vamos a necesitar el string de conexión. Para ello, accedemos a las propiedades de la base de datos y seleccionamos el string y modificamos los valores de conexión según los datos del usuario y contraseña definidos:
 
-<img src="https://dp3oiw-ch3302.files.1drv.com/y4mgI3TTKYyCIB5zNXroZ6HYXjMx0-vuYwgRkT3LloUoOmlBt7ebO5YcMo5NIH3YPZW29SUTgdqLhrdVEYplTZkt1dVK6YpdM8JIURBVXkRyWSK0O4bthY6-Ff-8-D-HSNEaGUZ1pua_D8x8h1_WMz7ID6miXT6f2n2Jf3DZI_kSfHk5mmTLjOB0Bvg8WC_B-nyn2_UZk06AUFXmSQamRLiGA?width=1355&height=517&cropmode=none">
+<img src="https://dp3miw-ch3302.files.1drv.com/y4mi5k7CRN1w2S6BgOPm2DbYovPXwTeABshmdLfgarvwmF1bZXkM6WyFyuaPcp4x1V98dCMt1RNC2au3gVchpWl5Ie6E4t1QVkd1dhTI5V1dJxKkJ6U9RnE7oe-EjfLPDpBR5yGJnWSJUNAee1QB7MtouHfjZRg5YIfeleJ2MholiyuFURkaBvSW7xXQAOy6fBAOgvYBJuV6WtWhnM4cASIBw?width=1366&height=641&cropmode=none">
 
-- Clic en *Create + Get started*
+<img src="https://dp3niw-ch3302.files.1drv.com/y4mLJWJarA4YTmCgoe4BO_eRPybnV_Le8HeS_UX023vC05ynuySdzDmt4xXL2m8hgqO0EbfzxuPerQ5z_TwWkyziauqUKWqmF8MIP2L_rEt3SvDadvzq5F7pSeaW9bKb_A3v62OitutsQ3xMS97VHQ6WbT9Ri3tIpua0Q_F-5Zamz3y0DeX_szxy9dpuCBkcOYVc_BUoIxe7PoyhlQjxbsOyw?width=572&height=514&cropmode=none">
 
+Seleccionamos el string completo teniendo en cuenta que debemos modificar los datos de accesos (ingresar el username y password) dentro de la cadena:
 
-- Para poder acceder a nuestra base de datos desde Azure Functions, vamos a necesitar el string de conexión. Para ello, accedemos a las propiedades de la base de datos y seleccionamos el string y modificamos los valores de conexión según los datos del usuario y contraseña definidos:
 ```
 Server=tcp:mvdgabsqlvs.database.windows.net,1433;Initial Catalog=functionsworkshop;Persist Security Info=False;User ID='{sql_username}';Password='{sql_password}';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
+Ya con el string de conexión, vamos a generar la función. Desde el portal vamos a acceder al siguiente enlace: https://functions.azure.com/signin para comenzar a crear nuestra función. Ingresamos el nuevo nombre de la función y la región a crear:
+
+<img src="https://dp3oiw-ch3302.files.1drv.com/y4mgI3TTKYyCIB5zNXroZ6HYXjMx0-vuYwgRkT3LloUoOmlBt7ebO5YcMo5NIH3YPZW29SUTgdqLhrdVEYplTZkt1dVK6YpdM8JIURBVXkRyWSK0O4bthY6-Ff-8-D-HSNEaGUZ1pua_D8x8h1_WMz7ID6miXT6f2n2Jf3DZI_kSfHk5mmTLjOB0Bvg8WC_B-nyn2_UZk06AUFXmSQamRLiGA?width=1355&height=517&cropmode=none">
+
+Clic en *Create + Get started*
+
+
+- Con la Function App creada, el siguiente paso es crear la función como indica la siguiente imagen:
+
+<img src="https://eo3miw-ch3302.files.1drv.com/y4mWTOJwF8fQ66_ZL2xIuw4UKaFC7KSYa9u4oG8FpxUDhRRXjeGVAg3VyeOCfUGq_xIP6ofFOCTsKfKbWpYiqpEIJa_U8FJJ0e6u7adGiSRKULj1845xqSIHEopW_z4S6WgL362WCik7-GL3QUVpaSZ7mXIbPIp9QkoShte8qLsVwKeRMykAx4R5z0zjnIHFwnMDuB9caBI6yf-a56vPzL9Ww?width=1355&height=585&cropmode=none">
+
+<img src="https://eo3niw-ch3302.files.1drv.com/y4meqkCefxGPPLRjUj47iCBB66kiOKtllpI0mdxjdF9-FNidLmM_T6t1zAdCU8WsKyN6jSpyx1BdWtdA9mREUHQFhU79tz0lQDunnyT8yPwrLoOle_KclD8MSDCtbl4EQqRAToSa0cFQl79LRZwlJDWlHCZ228WTjVjaquD4rXviSaIJM1s2ZPqG4jh3z6gvVbnqqZZhJKKqQzPv4CGSwE4ow?width=1036&height=477&cropmode=none">
+
+<img src="https://eo3oiw-ch3302.files.1drv.com/y4m84gUGV1WG6OOwSRjl3H9F_gxgoDE-aGGwUwzNJApAzNfJngBYwkLmvyV0ckfljekt-UgZQXUFN0IgAe8eaMUo3RgqutXOWkvKbrzwI0uNUxsspQOH9CAVrIyR0Id99ubfQ7CnA0Pd7tFsDItpKmZI4JPVHrJTMzkVEC5gB47AfdNWSQvXKZylI0qAva0jeSnzPg6b_QpNHz9tHodC_pp9g?width=337&height=322&cropmode=none">
+
+
+Y dentro del Código que aparece en la ventana vamos a reemplazarlo por lo siguiente:
 
 ```csharp
 #r "System.Configuration"
@@ -81,10 +98,10 @@ public static async Task Run(TimerInfo myTimer, TraceWriter log)
          {
              conn.Open();
              // Reemplazo valores
-             var text = "UPDATE SalesLT.Address SET City = 'Toronto' Where City = 'Montevideo'";
+             var text = "UPDATE SalesLT.Address SET City = 'Montevideo' Where City = 'Toronto'";
              using (SqlCommand cmd = new SqlCommand(text, conn))
              // Imprimo un log en pantalla
-             log.Info($"{rows} rows were deleted");
+             log.Info($"Listo!");
          }
      }
 ```
