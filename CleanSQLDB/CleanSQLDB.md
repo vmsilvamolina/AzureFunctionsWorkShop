@@ -1,4 +1,4 @@
-# Modifcar registros en base de datos SQL
+# Modificar registros en base de datos SQL
 
 Esta segunda parte del WorkShop, vamos a ver como podemos acceder a nuestra base de datos para realizar acciones, ya sean de administración así como también de mantenimiento de la misma.
 
