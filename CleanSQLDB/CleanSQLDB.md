@@ -8,7 +8,7 @@ Navegar a la siguiente dirección URL: https://portal.azure.com e ingresar con l
 
 En el portal seleccionar New (+), ingresar SQL Data y seleccionar el resultado para desplegar el asistente:
 
-<1>
+<img src="https://do3riw-ch3302.files.1drv.com/y4mO87S7UzK-yn-buislkU_gUrd1YLCQtjlum_Oe8_QcQR4Jj-_oGaZKewALRj1Artl7z8rOjrqG9wXzdDP6mpT414cHmCtqkgrxhQPthhdHIrKmBEuowgcgjn8luPGqCQWo2Dv_FlTE09PJ0X_XUxpgBqlEUjtBmWYrPVrsamuOhrtldC_OGia7gPVnQrBcz8BVjWzEM5tRxMwpFLcKBY23g?width=397&height=266&cropmode=none">
 
 # Consola
 
