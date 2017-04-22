@@ -1,4 +1,6 @@
-´´´
+
+
+```powershell
 #Datos
 $web = Invoke-WebRequest -Uri https://www.packtpub.com/packt/offers/free-learning -UseBasicParsing
 $texto = ($web.RawContent -split '<div class="dotd-title">' | select -Last 1)
@@ -10,4 +12,4 @@ $cred = New-Object -TypeName System.Management.Automation.PSCredential -Argument
 #Envío de mail 
 $date = Get-Date -Format dd/MM
 Send-MailMessage -To vmsilvamolina@gmail.com -From vmsilvamolina@victorsilva.com.uy -Subject "Packtpub: Libro gratis - $date" -Body $title -SmtpServer smtp.office365.com -UseSsl -Credential $cred -Port 587
-´´´
+```
