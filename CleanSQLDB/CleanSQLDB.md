@@ -32,7 +32,7 @@ Y como último paso seleccionar *Create*.
 
 <img src="https://ce3oiw-ch3302.files.1drv.com/y4mSVmeLGH5pTugsJnw39FfYmGiw26Ynhez4OA595cHIDwItmbMdeUYP0tYooXxC583Xk2X_jwh2q7HkNPlVBXL4_kStsCL0_e8JLghPLcE657pX_R-htjRZilz70i1dbEwCQExokCBHRYF5Ug5erU6yOG-sxhEG25N0YLbfbjAST3GKDSwarejyNYakk-wJ1ugt3X_z7W8-VQvYGrgRKvZMw?width=1366&height=640&cropmode=none">
 
-- En la imagen se detalla la regla de modo que permita el acceso desde cualquier IP (menos seguro, solamente para el ejemplo).Clic en *Save* para guardar cambios. Luego de generar la regla, clic en Ok.
+- En la imagen se detalla la regla de modo que permita el acceso desde cualquier IP (menos seguro, solamente para el ejemplo). Clic en *Save* para guardar cambios. Luego de generar la regla, clic en Ok.
 
 
 #### Conectar la Base de Datos
@@ -53,7 +53,7 @@ Y como último paso seleccionar *Create*.
 
 - Accedemos al siguiente enlace: https://functions.azure.com/signin para comenzar a crear nuestra función. Ingresamos el nuevo nombre de la función y la región a crear:
 
-<img src="">
+<img src="https://dp3oiw-ch3302.files.1drv.com/y4mgI3TTKYyCIB5zNXroZ6HYXjMx0-vuYwgRkT3LloUoOmlBt7ebO5YcMo5NIH3YPZW29SUTgdqLhrdVEYplTZkt1dVK6YpdM8JIURBVXkRyWSK0O4bthY6-Ff-8-D-HSNEaGUZ1pua_D8x8h1_WMz7ID6miXT6f2n2Jf3DZI_kSfHk5mmTLjOB0Bvg8WC_B-nyn2_UZk06AUFXmSQamRLiGA?width=1355&height=517&cropmode=none">
 
 - Clic en *Create + Get started*
 
