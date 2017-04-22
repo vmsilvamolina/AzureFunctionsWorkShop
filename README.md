@@ -27,4 +27,4 @@ Para realizar el workshop, vamos a necesitar lo siguiente:
 ## Objetivos
 
 * [Alertas al mail de libros gratis!](https://github.com/vmsilvamolina/AzureFunctionsWorkShop/blob/master/FreeEbookFolder/FreeEbookOfferPowerShell.md)
-* [Limpiar registros en SQL](https://github.com/vmsilvamolina/AzureFunctionsWorkShop/blob/master/FreeEbookFolder/FreeEbookOfferPowerShell.md)
+* [Limpiar registros en SQL](https://github.com/vmsilvamolina/AzureFunctionsWorkShop/blob/master/CleanSQLDB/CleanSQLDB.md)
