@@ -1,27 +1,30 @@
-#Portal
+# Portal
 
-##Iniciar sesión en el portal
+## Iniciar sesión en el portal
 
 Navegar a la siguiente dirección URL: https://portal.azure.com e ingresar con las credenciales de nuestra suscripción.
 
-##Crear el servidor SQL Server y el Grupo de Recursos
+### Crear el servidor SQL Server y el Grupo de Recursos
 
+En el portal seleccionar New (+), ingresar SQL Data y seleccionar el resultado para desplegar el asistente:
 
-#Consola
+<1>
 
-##Instalar el módulo de Azure PowerShell 
+# Consola
+
+## Instalar el módulo de Azure PowerShell 
 
 ```powershell
 Install-Module -Name AzureRM -Scope CurrentUser -Force
 ```
 
-##Iniciar sesión a nuestra suscripción de Azure
+## Iniciar sesión a nuestra suscripción de Azure
 
 ```powershell
 Add-AzureRmAccount
 ```
 
-##Create un Azure Resource Manager Resource Group
+## Create un Azure Resource Manager Resource Group
 
 ```powershell
 $ResourceGroup = @{
@@ -30,7 +33,7 @@ $ResourceGroup = @{
 }
 New-AzureRmResourceGroup @ResourceGroup
 ```
-##Create an Azure SQL Server
+## Create an Azure SQL Server
 
 ```powershell
 $SqlServer = @{
@@ -43,7 +46,7 @@ $SqlServer = @{
 New-AzureRmSqlServer @SqlServer
 ```
 
-##Create an Azure SQL Database
+## Create an Azure SQL Database
 
 ```powershell
 $SqlDatabase = @{
@@ -55,4 +58,4 @@ $SqlDatabase = @{
 New-AzureRmSqlDatabase @SqlDatabase
 ```
 
-##Conectarnos a la base de datos
+## Conectarnos a la base de datos
